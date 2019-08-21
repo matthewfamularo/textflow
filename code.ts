@@ -1,6 +1,9 @@
-  //Use Figma's traversal helper function to find all textGroup groups
+//Use Figma's traversal helper function to find all textGroup groups
 const nodes = figma.currentPage.findAll(
-  node => node.name.includes("textGroup") && node.children.length == 2 && node.type === "GROUP"
+  node =>
+    node.name.includes("textGroup") &&
+    node.children.length == 2 &&
+    node.type === "GROUP"
 );
 //Loop over each textGroup node
 for (const node of nodes) {
@@ -8,11 +11,19 @@ for (const node of nodes) {
   let paddingAmount = parseInt(node.name.split("-")[1]);
   //Figure out which element is on the right and which is on the left
   //Also ensures that the items aren't already in the right place
-  if (node.children[0].x < node.children[1].x && node.children[0].x + node.children[0].width + paddingAmount !== node.children[1].x) {
+  if (
+    node.children[0].x < node.children[1].x &&
+    node.children[0].x + node.children[0].width + paddingAmount !==
+      node.children[1].x
+  ) {
     //The first element is on the left, adjust the x value of the second element accordingly
     node.children[1].x =
       node.children[0].x + node.children[0].width + paddingAmount;
-  } else if(node.children[0].x > node.children[1].x && node.children[1].x + node.children[1].width + paddingAmount !== node.children[0].x) {
+  } else if (
+    node.children[0].x > node.children[1].x &&
+    node.children[1].x + node.children[1].width + paddingAmount !==
+      node.children[0].x
+  ) {
     //The first element is on the right, adjust the x value of the first element accordingly
     node.children[0].x =
       node.children[1].x + node.children[1].width + paddingAmount;
