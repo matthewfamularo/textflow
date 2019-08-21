@@ -1,5 +1,6 @@
 //Use Figma's traversal helper function to find all textGroup groups
 var nodes = figma.currentPage.findAll(function (node) { return node.name.includes("textGroup") && node.children.length == 2 && node.type === "GROUP"; });
+//Loop over each textGroup node
 for (var _i = 0, nodes_1 = nodes; _i < nodes_1.length; _i++) {
     var node = nodes_1[_i];
     //Set the paddingAmount based on the number specified in the layer name

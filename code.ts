@@ -2,6 +2,7 @@
 const nodes = figma.currentPage.findAll(
   node => node.name.includes("textGroup") && node.children.length == 2 && node.type === "GROUP"
 );
+//Loop over each textGroup node
 for (const node of nodes) {
   //Set the paddingAmount based on the number specified in the layer name
   let paddingAmount = parseInt(node.name.split("-")[1]);
